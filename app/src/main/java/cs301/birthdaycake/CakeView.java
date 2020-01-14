@@ -24,6 +24,7 @@ public class CakeView extends SurfaceView {
      */
     public static final float cakeTop = 400.0f;
     public static final float cakeLeft = 100.0f;
+    public static final float cakeSlightLeft = 150.0f;
     public static final float cakeWidth = 1200.0f;
     public static final float layerHeight = 200.0f;
     public static final float frostHeight = 50.0f;
@@ -121,6 +122,7 @@ public class CakeView extends SurfaceView {
 
         //Now a candle in the center
         drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+        drawCandle(canvas, cakeSlightLeft, cakeTop);
 
     }//onDraw
 
