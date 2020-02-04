@@ -6,4 +6,13 @@ public class CakeModel {
     boolean frostingOn = true;
     boolean candlesOn = true;
 
+    public void setLit(boolean l){
+        lit = l;
+    }
+    public void setCandlesOn(boolean c){
+        candlesOn = c;
+    }
+    public void setCandlesShown(int a){
+        candlesShown = a;
+    }
 }

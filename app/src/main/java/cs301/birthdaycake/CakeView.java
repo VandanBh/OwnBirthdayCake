@@ -72,14 +72,17 @@ public class CakeView extends SurfaceView {
     public void drawCandle(Canvas canvas, float left, float bottom) {
         canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
 
-        //draw the outer flame
-        float flameCenterX = left + candleWidth/2;
-        float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius/3;
-        canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
+        if(cakeModel.lit){
+            //draw the outer flame
+            float flameCenterX = left + candleWidth/2;
+            float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius/3;
+            canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
 
-        //draw the inner flame
-        flameCenterY += outerFlameRadius/3;
-        canvas.drawCircle(flameCenterX, flameCenterY, innerFlameRadius, innerFlamePaint);
+            //draw the inner flame
+            flameCenterY += outerFlameRadius/3;
+            canvas.drawCircle(flameCenterX, flameCenterY, innerFlameRadius, innerFlamePaint);
+        }
+
 
         //draw the wick
         float wickLeft = left + candleWidth/2 - wickWidth/2;
@@ -121,8 +124,32 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
 
         //Now a candle in the center
-        drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
-        drawCandle(canvas, cakeSlightLeft, cakeTop);
+        if(cakeModel.candlesOn){
+            if(cakeModel.candlesShown == 1){
+                drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+            } else if(cakeModel.candlesShown == 2){
+                drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*2)/3 - candleWidth/2, cakeTop);
+            } else if(cakeModel.candlesShown == 3){
+                drawCandle(canvas, cakeLeft + cakeWidth/4 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (2*cakeWidth)/4 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (3*cakeWidth)/4 - candleWidth/2, cakeTop);
+            } else if(cakeModel.candlesShown == 4){
+                drawCandle(canvas, cakeLeft + cakeWidth/5 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*2)/5 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*3)/5 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*4)/5 - candleWidth/2, cakeTop);
+            } else if(cakeModel.candlesShown == 5){
+                drawCandle(canvas, cakeLeft + cakeWidth/6 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*2)/6 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*3)/6 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*4)/6 - candleWidth/2, cakeTop);
+                drawCandle(canvas, cakeLeft + (cakeWidth*5)/6 - candleWidth/2, cakeTop);
+            }
+//            drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+//            drawCandle(canvas, cakeSlightLeft, cakeTop);
+        }
+
 
     }//onDraw
 
